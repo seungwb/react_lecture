@@ -8,7 +8,7 @@ export const DashboardMain = () => {
     <div className="dashboard-container">
       <ul className="dashboard-ul">
         <li className="menu-bar">{<LeftMenuBar />}</li>
-        <li className="content bg">
+        <li className="content bg-gray-50">
           <Suspense fallback={<h2>Loading....</h2>}>{<Outlet />}</Suspense>
         </li>
       </ul>

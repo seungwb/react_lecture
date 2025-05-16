@@ -1,10 +1,19 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import path from 'path';
 import tailwindcss from '@tailwindcss/vite';
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '@stores': path.resolve(__dirname, './src/stores'),
+      '@components': path.resolve(__dirname, './src/components'),
+      '@assets': path.resolve(__dirname, './src/assets'),
+    },
+  },
   server: {
     // '/api':
     // 프록시가 적용될 경로입니다. React 애플리케이션에서 /api로 시작하는 모든 요청이 프록시를 통해 전달됩니다.

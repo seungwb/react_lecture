@@ -14,5 +14,5 @@
 }
 
 .content {
-  @apply h-screen w-4/5 pl-8; /* 오른쪽 콘텐츠: 너비 75%, 왼쪽 패딩 추가 */
+  @apply h-screen w-4/5 bg-gray-50 pl-8; /* 오른쪽 콘텐츠: 너비 75%, 왼쪽 패딩 추가 */
 }
