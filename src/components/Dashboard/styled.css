@@ -10,7 +10,7 @@
 }
 
 .menu-bar {
-  @apply w-1/6 bg-gray-100 pb-80; /* 왼쪽 메뉴바: 너비 20%, 높이 화면 전체 */
+  @apply w-1/6 rounded-t-3xl bg-gray-100 pb-80; /* 왼쪽 메뉴바: 너비 20%, 높이 화면 전체 */
 }
 
 .content {

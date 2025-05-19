@@ -22,7 +22,7 @@
 }
 
 .logo-box {
-  @apply flex flex-col items-center justify-center p-4;
+  @apply flex flex-col items-center justify-center rounded-t-sm rounded-b-sm p-4;
   background-image: url('../../../asset/left_logoBg02.jpg'); /* 이미지 경로는 실제 위치에 맞게 조정하세요 */
   background-size: cover;
   background-position: center;
@@ -42,7 +42,7 @@
 }
 
 .parent-menu {
-  @apply flex flex-col bg-[#2e9acc] text-white;
+  @apply flex flex-col rounded-b-sm bg-[#2e9acc] text-white;
 }
 
 .child-menu-name {
