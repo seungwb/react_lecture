@@ -24,20 +24,8 @@
   @apply border-b border-gray-200 px-6 py-4 text-sm text-gray-700;
 }
 
-.notice-id-cell {
-  @apply font-medium text-gray-900;
-}
-
-.notice-title-cell {
-  @apply cursor-pointer font-medium text-blue-600 hover:text-blue-800;
-}
-
-.notice-date-cell {
-  @apply text-gray-500;
-}
-
-.notice-author-cell {
-  @apply font-medium text-gray-600;
+.notice-cell {
+  @apply border-b border-gray-200 px-6 py-4 text-sm font-medium text-gray-700;
 }
 
 .notice-empty-row {
