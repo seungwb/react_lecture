@@ -1,5 +1,6 @@
 import { Dashboard } from '../pages/Dashboard';
 import { NotFound } from '../pages/Error/NotFound/NotFound';
+import { Notice } from '../pages/Support/Notice';
 import { Login } from './../pages/Login';
 import { createBrowserRouter, type RouteObject } from 'react-router-dom';
 
@@ -12,6 +13,17 @@ const routers: RouteObject[] = [
   {
     path: '/react',
     Component: Dashboard,
+    children: [
+      {
+        path: 'support',
+        children: [
+          {
+            path: 'notice',
+            Component: Notice,
+          },
+        ],
+      },
+    ],
   },
 ];
 
