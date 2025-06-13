@@ -7,6 +7,9 @@ interface IPageNavigationProps {
   onPageChange: (page: number) => void;
 }
 
+// totalItems -> 총 데이터 개수
+// itemsPerPage -> 한 번에 보여줄 데이터의 개수
+// onPageChange -> 페이지 번호 클릭 시 실행되는 함수
 export const PageNavigation = ({
   totalItems,
   itemsPerPage,
@@ -42,7 +45,7 @@ export const PageNavigation = ({
       <button
         onClick={() => handlePageChange(1)}
         disabled={currentPage === 1}
-        className="pagination-button"
+        className="pagination-button cursor-pointer"
       >
         처음
       </button>
@@ -50,7 +53,7 @@ export const PageNavigation = ({
       <button
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="pagination-button"
+        className="pagination-button cursor-pointer"
       >
         이전
       </button>
@@ -60,7 +63,7 @@ export const PageNavigation = ({
           <button
             key={page}
             onClick={() => handlePageChange(page)}
-            className={`pagination-number-button ${
+            className={`pagination-number-button cursor-pointer${
               currentPage === page ? 'active' : ''
             }`}
           >
@@ -72,7 +75,7 @@ export const PageNavigation = ({
       <button
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="pagination-button"
+        className="pagination-button cursor-pointer"
       >
         다음
       </button>
@@ -80,7 +83,7 @@ export const PageNavigation = ({
       <button
         onClick={() => handlePageChange(totalPages)}
         disabled={currentPage === totalPages}
-        className="pagination-button"
+        className="pagination-button cursor-pointer"
       >
         마지막
       </button>

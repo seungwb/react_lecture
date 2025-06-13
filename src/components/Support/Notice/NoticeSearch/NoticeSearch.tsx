@@ -1,12 +1,24 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import './styeld.css';
-import { replace, useNavigate } from 'react-router-dom';
+import { NoticeContext } from '../../../../provider/NoticeProvider';
 
 export const NoticeSearch = () => {
   const title = useRef<HTMLInputElement>(null);
   const [startDate, setStartDate] = useState<string>();
   const [endDate, setEndDate] = useState<string>();
-  const navigate = useNavigate();
+  const { setSearchData } = useContext(NoticeContext);
+
+  // Provider로 데이터 전달
+  const handlerSearch = () => {
+    setSearchData({
+      title: title.current ? title.current.value : '',
+      startDate: startDate || '',
+      endDate: endDate || '',
+    });
+  };
+
+  // queryParam 으로 데이터 전달
+  /* const navigate = useNavigate();
 
   useEffect(() => {
     window.location.search &&
@@ -14,7 +26,7 @@ export const NoticeSearch = () => {
   }, [navigate]);
 
   const handlerSearch = () => {
-    // console.log(startDate, endDate, title.current?.value);
+    // // console.log(startDate, endDate, title.current?.value);
     const query: string[] = [];
 
     !title.current?.value || query.push(`title=${title.current.value}`);
@@ -23,7 +35,7 @@ export const NoticeSearch = () => {
 
     const queryString = query.length > 0 ? `?${query.join('&')}` : '';
     navigate(queryString);
-  };
+  }; */
 
   return (
     <div className="notice-container">
