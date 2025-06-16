@@ -1,4 +1,3 @@
-import { useLocation } from 'react-router-dom';
 import './styled.css';
 import axios, { type AxiosResponse } from 'axios';
 import { useContext, useEffect, useState } from 'react';
@@ -8,12 +7,18 @@ import type {
   INoticeResponse,
 } from '../../../../model/Support/INotice';
 import { NoticeContext } from '../../../../provider/NoticeProvider';
+import { NoticeModal } from '../NoticeModal/NoticeModal';
+import { useRecoilState } from 'recoil';
+import { modalState } from '../../../../stores/modalState';
+import { Portal } from '../../../../common/Portal';
 
 export const NoticeMain = () => {
   // const { search } = useLocation();
+  const [modal, setModal] = useRecoilState(modalState);
   const [noticeList, setNoticeList] = useState<INotice[]>([]);
   const [noticeCnt, setNoticeCnt] = useState<number>(0);
   const { searchData } = useContext(NoticeContext);
+  const [noticeId, setNoticeId] = useState<number>(0);
 
   useEffect(() => {
     searchList();
@@ -37,8 +42,18 @@ export const NoticeMain = () => {
     // 문제1. axios 서버로 갔다가 와야하는데, 이것은 시간이 오래걸림
   };
 
+  const noticeDetail = (id: number) => {
+    setModal({ isOpen: true, payload: id });
+  };
+
   return (
     <div className="notice-main-container">
+      {modal.isOpen && (
+        <Portal>
+          <NoticeModal id={modal.payload as number} reSearch={searchList} />
+        </Portal>
+      )}
+
       <table className="notice-table">
         <thead className="notice-table-header">
           <tr>
@@ -54,7 +69,12 @@ export const NoticeMain = () => {
               return (
                 <tr key={notice.noticeId} className="notice-table-row">
                   <td className="notice-cell">{notice.noticeId}</td>
-                  <td className="notice-cell cursor-pointer text-blue-600 hover:text-blue-800">
+                  <td
+                    className="notice-cell cursor-pointer text-blue-600 hover:text-blue-800"
+                    onClick={() => {
+                      noticeDetail(notice.noticeId);
+                    }}
+                  >
                     {notice.noticeTitle}
                   </td>
                   <td className="notice-cell">{notice.regDate}</td>

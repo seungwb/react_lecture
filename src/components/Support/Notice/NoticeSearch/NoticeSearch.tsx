@@ -1,8 +1,11 @@
 import { useContext, useRef, useState } from 'react';
 import './styeld.css';
 import { NoticeContext } from '../../../../provider/NoticeProvider';
+import { useRecoilState } from 'recoil';
+import { modalState } from '../../../../stores/modalState';
 
 export const NoticeSearch = () => {
+  const [_, setModal] = useRecoilState(modalState);
   const title = useRef<HTMLInputElement>(null);
   const [startDate, setStartDate] = useState<string>();
   const [endDate, setEndDate] = useState<string>();
@@ -15,6 +18,10 @@ export const NoticeSearch = () => {
       startDate: startDate || '',
       endDate: endDate || '',
     });
+  };
+
+  const openModal = () => {
+    setModal({ isOpen: true });
   };
 
   // queryParam 으로 데이터 전달
@@ -47,7 +54,7 @@ export const NoticeSearch = () => {
         ></input>
         <input type="date" onChange={(e) => setEndDate(e.target.value)}></input>
         <button onClick={handlerSearch}>검색</button>
-        <button>등록</button>
+        <button onClick={openModal}>등록</button>
       </div>
     </div>
   );
