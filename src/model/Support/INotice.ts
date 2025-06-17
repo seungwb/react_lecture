@@ -7,6 +7,11 @@ export interface INotice {
 
 export interface INoticeDetail extends INotice {
   noticeContent: string;
+  fileName: string;
+  fileExt: string;
+  fileSize: number;
+  physicalPath: string;
+  logicalPath: string;
 }
 
 export interface INoticeResponse {
